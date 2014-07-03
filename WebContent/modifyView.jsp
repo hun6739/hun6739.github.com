@@ -1,10 +1,11 @@
-<%@page import="board.BoardDataBean"%>
-<%@page import="board.BoardDBBean"%>
+<%@page import="com.board.bean.BoardDataBean"%>
+<%@page import="com.board.bean.BoardDBBean"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 
 <link href="style.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="script.js"></script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
 	int num = Integer.parseInt( request.getParameter( "num" ) );
@@ -16,13 +17,16 @@
 
 	if( result == 1 ) {
 		// 비밀번호가 같다
-		BoardDataBean article = manager.getArticle( num );		
+		BoardDataBean article = manager.getArticle( num );
+		request.setAttribute("num", num);
+		request.setAttribute("email", article.getEmail());
+		request.setAttribute("content", article.getContent());
 		%>
 		<body onload="document.modifyview.email.focus()">
 			<p>
 			<form method="post" action="modifyPro.jsp" name="modifyview" onsubmit="return modifyViewSave()">
 				
-				<input type="hidden" name="num" value="<%=num%>">
+				<input type="hidden" name="num" value=${num}>
 			
 				<table border="1" align="center" cellpadding="3" cellspacing="0">
 					<tr>
@@ -33,13 +37,13 @@
 					<tr>
 						<th height="30">이&nbsp;메&nbsp;일</th>
 						<td>
-							<input type="text" name="email" maxlength="50" size="40" value="<%=article.getEmail()%>">
+							<input type="text" name="email" maxlength="50" size="40" value=${email}>
 						</td>
 					</tr>
 					<tr>
 						<th height="30">내&nbsp;&nbsp;&nbsp;용 </th>
 						<td>
-							<textarea name="content" rows="10" cols="38"><%=article.getContent()%></textarea>
+							<textarea name="content" rows="10" cols="38">${content}</textarea>
 						</td>	
 					</tr>
 					<tr>
@@ -52,7 +56,7 @@
 						<th colspan="2" height="35">
 							<input type="submit" value="수정">
 							<input type="button" value="취소"
-						onclick="javascript:window.location='index.jsp'">
+						onclick="javascript:window.location='list.jsp'">
 						</th>
 					</tr>				
 				

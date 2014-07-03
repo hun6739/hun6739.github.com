@@ -1,4 +1,4 @@
-package board;
+package com.board.bean;
 
 import java.sql.Timestamp;
 

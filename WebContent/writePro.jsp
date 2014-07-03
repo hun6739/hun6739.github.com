@@ -1,11 +1,11 @@
-<%@page import="board.BoardDBBean"%>
+<%@page import="com.board.bean.BoardDBBean"%>
 <%@page import="java.sql.Timestamp"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%
 	request.setCharacterEncoding( "euc-kr" );
 %>
-<jsp:useBean id="article" class="board.BoardDataBean" />
+<jsp:useBean id="article" class="com.board.bean.BoardDataBean" />
 	<jsp:setProperty property="*" name="article"/>
 
 <%
@@ -41,6 +41,6 @@
 				<%
 	} else {
 		// 글쓰기 성공
-		response.sendRedirect( "index.jsp" );
+		response.sendRedirect( "list.jsp" );
 	}
 %>

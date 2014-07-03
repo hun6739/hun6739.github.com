@@ -3,16 +3,18 @@
 
 <script language="javascript" src="script.js"></script>
 <link href="style.css" rel="stylesheet" type="text/css">   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
 	int num = Integer.parseInt( request.getParameter( "num" ) );
+	request.setAttribute("num", num);
 %>
 
 <body onload="document.modifyform.passwd.focus()">
 	<p>
 	<form method="post" action="modifyView.jsp" name="modifyform" onsubmit="return modifySave()">
 		
-		<input type="hidden" name="num" value="<%=num%>">
+		<input type="hidden" name="num" value=${num}>
 		
 		<table border="1" align="center" cellpadding="3" cellspacing="0">
 			<tr>
