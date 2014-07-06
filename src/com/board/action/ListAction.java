@@ -17,7 +17,7 @@ public class ListAction  implements CommandAction {
 			HttpServletResponse response) throws Throwable {
 		// TODO Auto-generated method stub
 		BoardDBBean manager = BoardDBBean.getInstance();
-		int count = manager.getCount();	
+		int count = manager.getCount();
 		request.setAttribute("count", count);
 		
 		ArrayList <BoardDataBean> list = manager.getArticles( count );

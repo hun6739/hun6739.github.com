@@ -13,7 +13,6 @@
 		article.setEmail(request.getParameter("email"));
 		article.setContent(request.getParameter("content"));
 		article.setReg_date( new Timestamp( System.currentTimeMillis()) );
-		
 %>
 <%
 	BoardDBBean manager = BoardDBBean.getInstance();
@@ -41,6 +40,6 @@
 				<%
 	} else {
 		// 글쓰기 성공
-		response.sendRedirect( "list.jsp" );
+		response.sendRedirect( "list.do" );
 	}
 %>

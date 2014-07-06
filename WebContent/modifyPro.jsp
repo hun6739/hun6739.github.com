@@ -40,6 +40,6 @@
 		<%
 	} else {
 		// 수정 성공
-		response.sendRedirect( "index.jsp");		
+		response.sendRedirect( "list.do");		
 	}
 %>

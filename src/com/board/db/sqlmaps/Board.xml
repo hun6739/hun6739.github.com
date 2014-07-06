@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"  "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+ 
+<sqlMap namespace="Board">
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="board" type="com.board.bean.BoardDataBean" />
+	
+	<select id="getArticles"  resultClass="board">
+     	select * from guestroom order by num desc
+	</select>
+	<select id="getCount" resultClass="int">
+     	select count(*) from guestroom
+	</select>
+	<select id="getArticle" resultClass="board">
+     	select * from guestroom where num=#value#
+	</select>
+	<select id="checkArticle" resultClass="str">
+     	select passwd from guestroom where num=#value#
+	</select>
+	<insert id="insertArticle" parameterClass="board">
+		insert into guestroom (passwd,email,content,reg_date) values(#passwd#,#email#,#content#,#reg_date#)
+	</insert>
+	<update id="updateArticle" parameterClass="board">
+		update guestroom set email=#email#, content=#content#, passwd=#passwd#, mod_date=#mod_date# where num=#num#
+	</update>
+</sqlMap>
